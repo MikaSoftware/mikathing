@@ -145,6 +145,17 @@ We want to support ``python3``.
     sudo make install
     ```
 
+### Verify Phidgets
+cd ~/
+wget https://www.phidgets.com/downloads/phidget22/libraries/any/Phidget22Python.zip
+unzip Phidget22Python.zip
+cd Phidget22Python
+sudo python setup.py install
+
+cd ~/
+wget https://www.phidgets.com/downloads/phidget22/examples/python/HumiditySensor/Phidget22_Humidity_Python_Ex.zip
+unzip Phidget22_Humidity_Python_Ex.zip
+sudo python Humidity.py
 
 ### Mika Thing (Python) with Raspberry Pi
 1. Clone our project.
@@ -155,25 +166,31 @@ We want to support ``python3``.
     cd ~/mikathing
     ```
 
-2. Setup our virtual environment
+2. Activate the ``root`` account so our application can access the hardware.
+
+    ```
+    sudo -s
+    ```
+
+3. Setup our virtual environment
 
     ```
     virtualenv -p python3.6 env
     ```
 
-3. Now lets activate virtual environment
+4. Now lets activate virtual environment
 
     ```
     source env/bin/activate
     ```
 
-4. Now lets install the libraries this project depends on.
+5. Now lets install the libraries this project depends on.
 
     ```
     pip install -r requirements.txt
     ```
 
-5. In the ``src`` directory create a file called ``.env`` and populate it with the following content:
+6. In the ``src`` directory create a file called ``.env`` and populate it with the following content:
 
     ```
     # THE FOLLOWING VARIABLES ARE SET ACCORDING TO YOUR PHIDGET DEVICE VALUES.
@@ -191,12 +208,12 @@ We want to support ``python3``.
     APPLICATION_DATABASE=thing.db
     ```
 
-6. Please change the contents of the ``.env`` file to match the configuration found in your systen.
+7. Please change the contents of the ``.env`` file to match the configuration found in your systen.
 
-7. Once you are ready, run the application! (Please make sure all the Phidgets devices are connected to the Raspberry Pi.)
+8. Once you are ready, run the application! (Please make sure all the Phidgets devices are connected to the Raspberry Pi.)
 
     ```
-    cd ~/mikathing/src
+    cd /home/pi/mikathing/src
     python mikathing.py
     ```
 
@@ -213,14 +230,40 @@ The following set of instructions will show how to have **Mika Thing** applicati
 
     ```
     [Unit]
-    Description=Mika Think Daemon
+    Description=Mika Thing Daemon
     After=multi-user.target
 
     [Service]
     Type=idle
-    ExecStartPre=source /home/pi/mikathing/env/bin/activate
-    ExecStart=/usr/bin/python3 /home/pi/mikathing/src/mikathing.py
+    ExecStart=/home/pi/mikathing/env/bin/python3.6 /home/pi/mikathing/src/mikathing.py
 
     [Install]
     WantedBy=multi-user.target
+    ```
+
+
+3. We can now start the Gunicorn service we created and enable it so that it starts at boot:
+
+    ```
+    sudo systemctl start mikathing
+    sudo systemctl enable mikathing
+    ```
+
+4. Confirm our service is running.
+
+    ```
+    systemctl status mikathing.service
+    ```
+
+5. If the service is working correctly you should see something like this:
+
+    ```
+    * mikathing.service - Mika Thing (Python) Daemon
+        Loaded: loaded (/etc/systemd/system/mikathing.service; enabled; vendor preset: enabled)
+        Active: active (running) since Sun 2019-02-10 04:48:55 GMT; 4s ago
+      Main PID: 1286 (python3.6)
+        CGroup: /system.slice/mikathing.service
+                `-1286 /home/pi/mikathing/env/bin/python3.6 /home/pi/mikathing/src/mikathing.py
+
+    Feb 10 04:48:55 raspberrypi systemd[1]: Started Mika Thing (Python) Daemon.
     ```

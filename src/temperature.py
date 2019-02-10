@@ -26,8 +26,10 @@ def onAttachHandler(self):
         * DataInterval defines the minimum time between TemperatureChange events.
         * DataInterval can be set to any value from MinDataInterval to MaxDataInterval.
         """
-        # Note: 1000 milliseconds = 1 second
-        ph.setDataInterval(60000) # 60,000 ms = 60 s = 1 minute
+        # Note: 1,000 milliseconds = 1 second
+        #       60,000 ms = 60 s = 1 minute
+        #       300,000 ms = 5 minutes
+        ph.setDataInterval(300000)
 
         """
         * Set the TemperatureChangeTrigger inside of the attach handler to initialize the device with this value.
@@ -87,10 +89,10 @@ class TemperatureSensorAccessObject:
             try:
                 TemperatureSensorAccessObject.__ch = TemperatureSensor()
             except PhidgetException as e:
-                sys.stderr.write("Phidget Error -> Creating TemperatureSensor: \n\t" + e)
+                sys.stderr.write("Phidget Error -> Creating TemperatureSensor: \n\t" + str(e))
                 raise
             except RuntimeError as e:
-                sys.stderr.write("Runtime Error -> Creating TemperatureSensor: \n\t" + e)
+                sys.stderr.write("Runtime Error -> Creating TemperatureSensor: \n\t" + str(e))
                 raise
 
             TEMPERATURE_SERIAL_NUMBER = int(os.getenv("TEMPERATURE_SERIAL_NUMBER"))
@@ -120,7 +122,7 @@ class TemperatureSensorAccessObject:
         try:
             self.__ch.openWaitForAttachment(5000)
         except PhidgetException as e:
-            sys.stderr.write("Phidget Error -> Waiting for Attachment: \n\t" + e)
+            sys.stderr.write("Phidget Error -> Waiting for Attachment: \n\t" + str(e))
             raise
 
     def terminateOperation(self):

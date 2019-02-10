@@ -28,8 +28,10 @@ def onAttachHandler(self):
         * DataInterval defines the minimum time between HumidityChange events.
         * DataInterval can be set to any value from MinDataInterval to MaxDataInterval.
         """
-        # Note: 1000 milliseconds = 1 second
-        ph.setDataInterval(60000) # 60,000 ms = 60 s = 1 minute
+        # Note: 1,000 milliseconds = 1 second
+        #       60,000 ms = 60 s = 1 minute
+        #       300,000 ms = 5 minutes
+        ph.setDataInterval(60000)
 
         """
         * Set the HumidityChangeTrigger inside of the attach handler to initialize the device with this value.
@@ -39,7 +41,7 @@ def onAttachHandler(self):
         ph.setHumidityChangeTrigger(0.0)
 
     except PhidgetException as e:
-        sys.stderr.write("Phidget Error -> Registering HumiditySensor: \n\t" + e)
+        sys.stderr.write("Phidget Error -> Registering HumiditySensor: \n\t" + str(e))
         traceback.print_exc()
         return
 
@@ -68,22 +70,6 @@ def onErrorHandler(self, errorCode, errorString):
     os.kill(os.getpid(), signal.SIGHUP) # Unix version only...
 
 
-def DisplayError(e):
-    sys.stderr.write("Desc: " + e.details + "\n")
-
-    if (e.code == ErrorCode.EPHIDGET_WRONGDEVICE):
-        sys.stderr.write("\tThis error commonly occurs when the Phidget function you are calling does not match the class of the channel that called it.\n"
-                        "\tFor example, you would get this error if you called a PhidgetVoltageInput_* function with a PhidgetDigitalOutput channel.")
-    elif (e.code == ErrorCode.EPHIDGET_NOTATTACHED):
-        sys.stderr.write("\tThis error occurs when you call Phidget functions before a Phidget channel has been opened and attached.\n"
-                        "\tTo prevent this error, ensure you are calling the function after the Phidget has been opened and the program has verified it is attached.")
-    elif (e.code == ErrorCode.EPHIDGET_NOTCONFIGURED):
-        sys.stderr.write("\tThis error code commonly occurs when you call an Enable-type function before all Must-Set Parameters have been set for the channel.\n"
-                        "\tCheck the API page for your device to see which parameters are labled \"Must be Set\" on the right-hand side of the list.")
-    else:
-        sys.stderr.write("\tUnknown error", str(e))
-
-
 class HumiditySensorAccessObject:
     # Here will be the instance stored.
     __instance = None
@@ -105,10 +91,10 @@ class HumiditySensorAccessObject:
             try:
                 HumiditySensorAccessObject.__ch = HumiditySensor()
             except PhidgetException as e:
-                sys.stderr.write("Phidget Error -> Creating HumiditySensor: \n\t" + e)
+                sys.stderr.write("Phidget Error -> Creating HumiditySensor: \n\t" + str(e))
                 raise
             except RuntimeError as e:
-                sys.stderr.write("Runtime Error -> Creating HumiditySensor: \n\t" + e)
+                sys.stderr.write("Runtime Error -> Creating HumiditySensor: \n\t" + str(e))
                 raise
 
             HUMIDITY_SERIAL_NUMBER = int(os.getenv("HUMIDITY_SERIAL_NUMBER"))
@@ -138,7 +124,7 @@ class HumiditySensorAccessObject:
         try:
             self.__ch.openWaitForAttachment(5000)
         except PhidgetException as e:
-            DisplayError(e)
+            sys.stderr.write("Phidget Error -> Waiting for Attachment but received error ID: \n\t" + str(e))
             os.kill(os.getpid(), signal.SIGHUP) # Unix version only...
 
     def terminateOperation(self):
