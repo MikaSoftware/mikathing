@@ -16,11 +16,11 @@ Here is how it would look on MacOS and the highlighted red-box is where the valu
 ## Installation
 1. Clone the project.
 
-    ```
-    $ cd ~/
-    $ git clone https://github.com/mikasoftware/mikathing.git
-    $ cd ~/mikathing
-    ```
+  ```
+  cd ~/
+  git clone https://github.com/mikasoftware/mikathing.git
+  cd ~/mikathing
+  ```
 
 
 2. Setup our virtual environment
