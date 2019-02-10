@@ -69,19 +69,19 @@ We want to support ``python3``.
 
 3. Compile and install ``Python3``.
 
-  ```
-  sudo -s
-  cd Python-3.6.0
-  bash configure
-  make altinstall
-  exit
-  ```
+    ```
+    sudo -s
+    cd Python-3.6.0
+    bash configure
+    make altinstall
+    exit
+    ```
 
-4. Install ``pip` for ``Python3``.
+4. Install ``pip`` for ``Python3``.
 
-  ```
-  sudo apt-get install python3-pip
-  ```
+    ```
+    sudo apt-get install python3-pip
+    ```
 
 
 ### Phidgets with Raspberry Pi
