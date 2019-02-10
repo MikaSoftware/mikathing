@@ -21,15 +21,18 @@ def onAttachHandler(self):
 
     ph = self
     try:
+        # Fetch this devices maximum data interval.
+        maxDataInterval = ph.getMaxDataInterval() # 60000
+
         """
         * Set the DataInterval inside of the attach handler to initialize the device with this value.
         * DataInterval defines the minimum time between TemperatureChange events.
         * DataInterval can be set to any value from MinDataInterval to MaxDataInterval.
         """
         # Note: 1,000 milliseconds = 1 second
-        #       60,000 ms = 60 s = 1 minute
+        #       60,000 ms = 60 s = 1 minute (Max allowed by Phidget)
         #       300,000 ms = 5 minutes
-        ph.setDataInterval(300000)
+        ph.setDataInterval(maxDataInterval)
 
         """
         * Set the TemperatureChangeTrigger inside of the attach handler to initialize the device with this value.
