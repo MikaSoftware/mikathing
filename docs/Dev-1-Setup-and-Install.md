@@ -16,50 +16,50 @@ Here is how it would look on MacOS and the highlighted red-box is where the valu
 ## Installation
 1. Clone the project.
 
-  ```
-  cd ~/
-  git clone https://github.com/mikasoftware/mikathing.git
-  cd ~/mikathing
-  ```
+    ```
+    cd ~/
+    git clone https://github.com/mikasoftware/mikathing.git
+    cd ~/mikathing
+    ```
 
 
 2. Setup our virtual environment
 
-  ```
-  virtualenv -p python3.6 env
-  ```
+    ```
+    virtualenv -p python3.6 env
+    ```
 
 
 3. Now lets activate virtual environment
 
-  ```
-  source env/bin/activate
-  ```
+    ```
+    source env/bin/activate
+    ```
 
 
 4. Now lets install the libraries this project depends on.
 
-  ```
-  pip install -r requirements.txt
-  ```
+    ```
+    pip install -r requirements.txt
+    ```
 
 5. In the ``src`` directory create a file called ``.env`` and populate it with the following content:
 
-  ```
-  # THE FOLLOWING VARIABLES ARE SET ACCORDING TO YOUR PHIDGET DEVICE VALUES.
-  # PLEASE REVIEW THE PHIDGETS.COM WEBSITE TO GET MORE INFORMATION HOW TO GET
-  # THESE VALUES FROM YOUR COMPUTER.
-  HUMIDITY_SERIAL_NUMBER=538319
-  HUMIDITY_VINT_HUB_PORT_NUMBER=0
-  HUMIDITY_CHANNEL_NUMBER=0
-  TEMPERATURE_SERIAL_NUMBER=538319
-  TEMPERATURE_VINT_HUB_PORT_NUMBER=0
-  TEMPERATURE_CHANNEL_NUMBER=0
+    ```
+    # THE FOLLOWING VARIABLES ARE SET ACCORDING TO YOUR PHIDGET DEVICE VALUES.
+    # PLEASE REVIEW THE PHIDGETS.COM WEBSITE TO GET MORE INFORMATION HOW TO GET
+    # THESE VALUES FROM YOUR COMPUTER.
+    HUMIDITY_SERIAL_NUMBER=538319
+    HUMIDITY_VINT_HUB_PORT_NUMBER=0
+    HUMIDITY_CHANNEL_NUMBER=0
+    TEMPERATURE_SERIAL_NUMBER=538319
+    TEMPERATURE_VINT_HUB_PORT_NUMBER=0
+    TEMPERATURE_CHANNEL_NUMBER=0
 
-  # THE FOLLOWING VARIABLES ADJUST THE OPERATION OF THIS APPLICATION.
-  APPLICATION_DATA_INTERVAL_IN_MINUTES=5
-  APPLICATION_DATABASE=thing.db
-  ```
+    # THE FOLLOWING VARIABLES ADJUST THE OPERATION OF THIS APPLICATION.
+    APPLICATION_DATA_INTERVAL_IN_MINUTES=5
+    APPLICATION_DATABASE=thing.db
+    ```
 
 6. Please change the contents of the ``.env`` file to match the configuration found in your systen.
 

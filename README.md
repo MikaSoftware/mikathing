@@ -20,7 +20,7 @@ The data logger has been tested and works on:
 ## Installation
 
 * [Install on MacOS / Linux for development](/docs/Dev-1-Setup-and-Install.md)
-
+* [Install on Raspberry Pi for production](/docs/DevOps-1-Setup-and-install-on-raspbian.md)
 
 ## License
 This library is licensed under the **BSD** license. See [LICENSE](LICENSE) for more information.
