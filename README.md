@@ -1,7 +1,7 @@
 Mika Thing (Python)
 ===
 
-A real-time runtime Internet of Things (IoT) data logger. Currently supported devices are as follows:
+A real-time runtime Internet of Things (IoT) data logger. Current supported devices:
 
 * [HUM1000_0 - Humidity Phidget](https://phidgets.com/docs/HUM1000_User_Guide)
 * [TMP1000_0 - Temperature Phidget](https://phidgets.com/docs/TMP1000_User_Guide)
