@@ -49,6 +49,15 @@ Please note these instructions were made from MacOS.
 ## Installation
 The following instructions are done through the ``SSH`` session.
 
+### Update Libraries
+
+    ```
+    sudo apt-get upgrade
+    sudo apt-get upgrade
+    sudo apt-get install libssl-dev
+    ```
+
+
 ### Python 3.6
 We want to support ``python3``.
 
@@ -56,7 +65,7 @@ We want to support ``python3``.
 
     ```
     sudo apt-get install build-essential checkinstall
-    sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+    sudo apt-get install libreadline-gplv2-dev libssl-dev libncursesw5-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
     ```
 
 2. Download and unzip ``Python3``.
@@ -71,7 +80,7 @@ We want to support ``python3``.
 
     ```
     sudo -s
-    cd Python-3.6.0
+    cd /usr/src/Python-3.6.0
     bash configure
     make altinstall
     exit
@@ -184,8 +193,34 @@ We want to support ``python3``.
 
 6. Please change the contents of the ``.env`` file to match the configuration found in your systen.
 
-7. Once you are ready, run the application!
+7. Once you are ready, run the application! (Please make sure all the Phidgets devices are connected to the Raspberry Pi.)
 
     ```
+    cd ~/mikathing/src
     python mikathing.py
+    ```
+
+### Setup Mika Thing with Systemd
+The following set of instructions will show how to have **Mika Thing** application to automatically startup when the system startups. using ``systemd``.
+
+1. While being logged in as ``pi`` run the following:
+
+    ```
+    $ sudo vi /etc/systemd/system/mikathing.service
+    ```
+
+2. Copy and paste the following contents.
+
+    ```
+    [Unit]
+    Description=Mika Think Daemon
+    After=multi-user.target
+
+    [Service]
+    Type=idle
+    ExecStartPre=source /home/pi/mikathing/env/bin/activate
+    ExecStart=/usr/bin/python3 /home/pi/mikathing/src/mikathing.py
+
+    [Install]
+    WantedBy=multi-user.target
     ```
