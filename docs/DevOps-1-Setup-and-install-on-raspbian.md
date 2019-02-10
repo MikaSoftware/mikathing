@@ -145,17 +145,21 @@ We want to support ``python3``.
     sudo make install
     ```
 
-### Verify Phidgets
-cd ~/
-wget https://www.phidgets.com/downloads/phidget22/libraries/any/Phidget22Python.zip
-unzip Phidget22Python.zip
-cd Phidget22Python
-sudo python setup.py install
+10. Run this code to verify the phidgets are working.
 
-cd ~/
-wget https://www.phidgets.com/downloads/phidget22/examples/python/HumiditySensor/Phidget22_Humidity_Python_Ex.zip
-unzip Phidget22_Humidity_Python_Ex.zip
-sudo python Humidity.py
+    ```
+    cd ~/
+    wget https://www.phidgets.com/downloads/phidget22/libraries/any/Phidget22Python.zip
+    unzip Phidget22Python.zip
+    cd Phidget22Python
+    sudo python setup.py install
+
+    cd ~/
+    wget https://www.phidgets.com/downloads/phidget22/examples/python/HumiditySensor/Phidget22_Humidity_Python_Ex.zip
+    unzip Phidget22_Humidity_Python_Ex.zip
+    sudo python Humidity.py
+    ```
+
 
 ### Mika Thing (Python) with Raspberry Pi
 1. Clone our project.
