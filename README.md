@@ -6,7 +6,7 @@ A real-time runtime Internet of Things (IoT) data logger. Current supported devi
 * [HUM1000_0 - Humidity Phidget](https://phidgets.com/docs/HUM1000_User_Guide)
 * [TMP1000_0 - Temperature Phidget](https://phidgets.com/docs/TMP1000_User_Guide)
 
-Data logger saves all the **time-series data** locally in a ``SQLite`` database and if enabled supports remote uploading to [][MikaPost](https://MikaPost.com) data repository.
+Data logger saves all the **time-series data** locally in a ``SQLite`` database and if enabled supports remote uploading to [MikaPost](https://MikaPost.com) data repository.
 
 The data logger has been tested and works on:
 
