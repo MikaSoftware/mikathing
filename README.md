@@ -15,6 +15,7 @@ The data logger has been tested and works on:
 
 ## Installation
 
+* [Install on MacOS / Linux for development](/docs/Dev-1-Setup-and-Install.md)
 
 
 ## License
