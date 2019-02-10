@@ -122,7 +122,7 @@ class HumiditySensorAccessObject:
         try:
             self.__ch.openWaitForAttachment(5000)
         except PhidgetException as e:
-            sys.stderr.write("Phidget Error -> Waiting for Attachment: \n\t" + e)
+            sys.stderr.write("Phidget Error -> Waiting for Attachment: \n\t" + str(e))
             os.kill(os.getpid(), signal.SIGHUP) # Unix version only...
 
     def terminateOperation(self):
