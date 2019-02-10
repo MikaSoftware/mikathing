@@ -221,7 +221,44 @@ We want to support ``python3``.
     python mikathing.py
     ```
 
-### Setup Mika Thing with Systemd
+### Setup Seperate Processes
+If you want a temporary solution of running [Mika Thing](https://github.com/MikaSoftware/mikathing) in the background while you leave the ``SSH`` session then follow these instructuions. Please note if the **Raspberry Pi** restarts you will lose the process and you'll need to manually re-create it. Special thanks to [this link](https://raspi.tv/2012/using-screen-with-raspberry-pi-to-avoid-leaving-ssh-sessions-open).
+
+1. Install ``screen``:
+
+    ```
+    sudo apt-get install screen
+    ```
+
+2. Run our screen.
+
+    ```
+    screen
+    ```
+
+3. Run our app.
+
+    ```
+    sudo -s
+    source /home/pi/mikathing/env/bin/activate
+    python /home/pi/mikathing/src/mikathing.py
+    ```
+
+4. On your keyboard, click ``CTRL + A + D``. This will detach the process.
+
+5. Confirm our process is working.
+
+    ```
+    screen -list
+    ```
+
+6. If you want to resume that process, run:
+
+    ```
+    screen -r
+    ```
+
+### Setup Mika Thing with Systemd (TODO: BUGFIX)
 The following set of instructions will show how to have **Mika Thing** application to automatically startup when the system startups. using ``systemd``.
 
 1. While being logged in as ``pi`` run the following:

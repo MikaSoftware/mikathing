@@ -25,6 +25,7 @@ The data logger has been tested and works on:
 
 ### Extra
 * [Adding Wifi to Rasbperry Pi](/docs/DevOps-2-Adding-Wifi-to-Raspberry-Pi.md)
+* [Building a Prototype Case](/docs/DevOps-3-Building-a-Prototype-Case.md)
 
 ## License
 This library is licensed under the **BSD** license. See [LICENSE](LICENSE) for more information.
