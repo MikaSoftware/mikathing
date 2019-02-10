@@ -13,6 +13,9 @@ The data logger has been tested and works on:
 * MacOS
 * Linux
 
+## Screenshot
+![Alt text](docs/media/raspberry_pi_plus_phidgets_project.jpeg?raw=true "Mika Think Project")
+
 ## Installation
 
 * [Install on MacOS / Linux for development](/docs/Dev-1-Setup-and-Install.md)
