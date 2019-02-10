@@ -271,3 +271,7 @@ The following set of instructions will show how to have **Mika Thing** applicati
 
     Feb 10 04:48:55 raspberrypi systemd[1]: Started Mika Thing (Python) Daemon.
     ```
+
+6. Congradulations! You have setup **Mika Thing`` application to automatically startup on boot. Just don't forget make sure the [phidgets](https://phidgets.com) are connected to the raspberrypi whenver you run the computer.
+
+  ![Mika Thing Project](media/raspberry_pi_plus_phidgets_project.jpeg)
