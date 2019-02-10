@@ -180,3 +180,6 @@ coverage.txt
 
 # Do not share your `sqlite3` database related files.
 src/thing.db
+
+# Do not share private notes.
+private.txt
